@@ -9,6 +9,8 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
+st.header('Oligopoly APCs')
+
 df = pd.read_csv('oecd.csv')
 
 # Groupby journal and calculate Average APC
@@ -82,6 +84,8 @@ fig.add_annotation(x=4.5, y=8.4,
 
 fig.update_layout(height=600, width=800)
 
+fig.update_xaxes(showgrid=True)
+
 st.plotly_chart(fig)
 
 
@@ -93,6 +97,8 @@ fig3 = px.scatter(result, x='n_dois', y='apc_total', log_x = True, log_y = True,
                 color_discrete_sequence=px.colors.qualitative.Plotly)
 
 fig3.update_layout(height=600, width=800)
+
+fig3.update_xaxes(showgrid=True)
 
 st.plotly_chart(fig3)
 
@@ -111,6 +117,30 @@ fig2 = px.scatter(result, x='n_dois', y='apc_total', log_x = True, log_y = True,
 
 fig2.update_layout(height=800, width=800)
 
+fig2.update_xaxes(showgrid=True)
+
 st.plotly_chart(fig2)#, use_container_width=True)
 
 
+
+st.header('By OA Mode')
+by_oamode = pd.read_csv('byoamode.csv')
+by_oamode
+
+fig4 = px.bar(by_oamode, x='parent_publisher', y='apc_total', color='oa_status', color_discrete_sequence=px.colors.qualitative.Plotly)
+
+fig4.update_layout(height=600, width=800)
+st.plotly_chart(fig4)
+
+
+
+fig5 = px.scatter(by_oamode, x='n_dois_percent', y='apc_total_percent', color='oa_status', symbol='parent_publisher',
+                  color_discrete_sequence=px.colors.qualitative.Plotly)
+
+fig5.add_shape(type="line",
+    x0=.2, y0=.2, x1=.8, y1=.8,
+    line=dict(color="Red", width=1, dash="dot"))
+
+fig5.update_xaxes(nticks=10, showgrid=True)
+
+st.plotly_chart(fig5)
