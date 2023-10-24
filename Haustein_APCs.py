@@ -26,7 +26,7 @@ fig = px.scatter(result, x='n_dois', y='apc_total', log_x = True, log_y = True, 
                  title='Total APCs collected and number of articles, by journal, 2015-2018', opacity=0.4,
                 hover_name = 'journal_name',
                 hover_data = ['oa_status', 'apc'],
-                color_discrete_sequence=['blue', 'red'])
+                color_discrete_sequence=px.colors.qualitative.Plotly)
 
 # APC lines
 fig.add_shape(type="line",
@@ -82,4 +82,35 @@ fig.add_annotation(x=4.5, y=8.4,
 
 fig.update_layout(height=600, width=800)
 
-st.plotly_chart(fig)#, use_container_width=True)
+st.plotly_chart(fig)
+
+
+
+fig3 = px.scatter(result, x='n_dois', y='apc_total', log_x = True, log_y = True, color='parent_publisher', #symbol='parent_publisher',
+                 title='Total APCs collected and number of articles, by publisher, 2015-2018', opacity=0.4,
+                hover_name = 'journal_name',
+                hover_data = ['oa_status', 'apc'],
+                color_discrete_sequence=px.colors.qualitative.Plotly)
+
+fig3.update_layout(height=600, width=800)
+
+st.plotly_chart(fig3)
+
+
+
+fig2 = px.scatter(result, x='n_dois', y='apc_total', log_x = True, log_y = True, color='oa_status', 
+                 facet_col='parent_publisher', facet_col_wrap=2,
+                 title='Total APCs collected and number of articles, by journal and publisher, 2015-2018', opacity=0.4,
+                hover_name = 'journal_name',
+                hover_data = ['oa_status', 'apc'],
+                color_discrete_sequence=px.colors.qualitative.Plotly)
+
+# fig2.add_shape(type="line",
+#     x0=1, y0=3000, x1=100000, y1=300000000,
+#     line=dict(color="RoyalBlue", width=1, dash="dot"))
+
+fig2.update_layout(height=800, width=800)
+
+st.plotly_chart(fig2)#, use_container_width=True)
+
+
