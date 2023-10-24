@@ -1,0 +1,11 @@
+parent_publisher,oa_status,n_dois,apc_total,n_dois_percent,apc_total_percent
+Elsevier,gold,20193,45554416.23,0.2381,0.2059
+Elsevier,hybrid,64600.58333,175656464.4,0.7619,0.7941
+Sage,gold,14264,22415179.03,0.8149,0.7108
+Sage,hybrid,3241,9121023,0.1852,0.2892
+Springer-Nature,gold,225867.4167,438455406.2,0.8171,0.7485
+Springer-Nature,hybrid,50564.83333,147354490.6,0.1829,0.2515
+Taylor & Francis,gold,25207,50993733.59,0.746,0.6691
+Taylor & Francis,hybrid,8584.933333,25221393.33,0.2541,0.3309
+Wiley,gold,22665,51933868.56,0.459,0.3676
+Wiley,hybrid,26710.16667,89335851.67,0.541,0.6324
