@@ -25,7 +25,8 @@ result
 
 # Scatter plot by journal
 fig = px.scatter(result, x='n_dois', y='apc_total', log_x = True, log_y = True, color='oa_status', #symbol='parent_publisher',
-                 title='Total APCs collected and number of articles, by journal, 2015-2018', opacity=0.4,
+                 title='Total APCs collected and number of articles, by journal, 2015-2018<br><sup>Click and drag to zoom, click legend to turn category on/off</sup>', 
+                 opacity=0.4,
                 hover_name = 'journal_name',
                 hover_data = ['oa_status', 'apc'],
                 color_discrete_sequence=px.colors.qualitative.Plotly)
@@ -91,7 +92,8 @@ st.plotly_chart(fig)
 
 
 fig3 = px.scatter(result, x='n_dois', y='apc_total', log_x = True, log_y = True, color='parent_publisher', #symbol='parent_publisher',
-                 title='Total APCs collected and number of articles, by publisher, 2015-2018', opacity=0.4,
+                 title='Total APCs collected and number of articles, by publisher, 2015-2018', 
+                 opacity=0.4,
                 hover_name = 'journal_name',
                 hover_data = ['oa_status', 'apc'],
                 color_discrete_sequence=px.colors.qualitative.Plotly)
@@ -122,12 +124,13 @@ fig2.update_xaxes(showgrid=True)
 st.plotly_chart(fig2)#, use_container_width=True)
 
 
-
+#######################################
 st.header('By OA Mode')
 by_oamode = pd.read_csv('byoamode.csv')
 by_oamode
 
-fig4 = px.bar(by_oamode, x='parent_publisher', y='apc_total', color='oa_status', color_discrete_sequence=px.colors.qualitative.Plotly)
+fig4 = px.bar(by_oamode, x='parent_publisher', y='apc_total', color='oa_status', color_discrete_sequence=px.colors.qualitative.Plotly,
+              title = 'Reproducing Figure 2 from preprint')
 
 fig4.update_layout(height=600, width=800)
 st.plotly_chart(fig4)
@@ -135,7 +138,8 @@ st.plotly_chart(fig4)
 
 
 fig5 = px.scatter(by_oamode, x='n_dois_percent', y='apc_total_percent', color='oa_status', symbol='parent_publisher',
-                  color_discrete_sequence=px.colors.qualitative.Plotly)
+                  color_discrete_sequence=px.colors.qualitative.Plotly,
+                  title = 'Comparing gold/hybrid percentage of DOIs vs. percentage of $ brought in, by publisher<br><sup>Shows me that hybrid (red) brings in proportionally more money than amount of papers would suggest</sup>')
 
 fig5.add_shape(type="line",
     x0=.2, y0=.2, x1=.8, y1=.8,
