@@ -23,10 +23,10 @@ result
 
 # Scatter plot by journal
 fig = px.scatter(result, x='n_dois', y='apc_total', log_x = True, log_y = True, color='oa_status', #symbol='parent_publisher',
-                 title='Total APCs collected and number of articles, by journal, 2015-2018', opacity=0.5,
+                 title='Total APCs collected and number of articles, by journal, 2015-2018', opacity=0.4,
                 hover_name = 'journal_name',
                 hover_data = ['oa_status', 'apc'],
-                color_continuous_scale=px.colors.sequential.Viridis)
+                color_discrete_sequence=['blue', 'red'])
 
 # APC lines
 fig.add_shape(type="line",
@@ -80,6 +80,6 @@ fig.add_annotation(x=4.5, y=8.4,
             arrowhead=0,
             textangle=-25)
 
-fig.update_layout(height=500, width=1500)
+fig.update_layout(height=600, width=800)
 
-st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig)#, use_container_width=True)
